@@ -12,9 +12,13 @@ import {
   Sparkles,
   CheckCircle
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 export default function Home() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const features = [
     {
       icon: Zap,
@@ -89,12 +93,10 @@ export default function Home() {
               <Button 
                 size="lg" 
                 className="bg-gradient-primary hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-glow"
-                asChild
+                onClick={() => user ? navigate('/report-form') : navigate('/auth')}
               >
-                <a href="/report-form">
-                  Create Your Report
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                {user ? 'Create Your Report' : 'Get Started'}
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               
               <Button 
@@ -247,12 +249,10 @@ export default function Home() {
               <Button 
                 size="lg" 
                 className="bg-gradient-primary hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-glow"
-                asChild
+                onClick={() => user ? navigate('/report-form') : navigate('/auth')}
               >
-                <a href="/report-form">
-                  Start Creating
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
+                {user ? 'Start Creating' : 'Sign Up Now'}
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 variant="outline" 
