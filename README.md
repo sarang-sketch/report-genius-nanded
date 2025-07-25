@@ -1,73 +1,117 @@
-# Welcome to your Lovable project
+# NaN Report Hub - AI-Powered Report Generation & Delivery
 
-## Project info
+> **Transform ideas into professional reports with AI, delivered fast in Nanded city**
 
-**URL**: https://lovable.dev/projects/b6be48a0-ea05-4f2f-bb08-82652ee64a5d
+## 🚀 Overview
 
-## How can I edit this code?
+NaN Report Hub is a revolutionary startup-level platform that combines AI-powered content generation with local delivery services. Students and professionals can generate high-quality, formatted reports (30-40 pages) and get them printed and delivered within 1-2 hours in Nanded city.
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+### Frontend (React + Tailwind + TypeScript)
+- **Modern Dark/Light Theme**: Professional design with custom gradients and animations
+- **Responsive UI**: Beautiful interface optimized for all devices
+- **Real-time Pricing**: Transparent calculator with delivery cost breakdown
+- **Professional Components**: Cards, forms, navigation with premium styling
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b6be48a0-ea05-4f2f-bb08-82652ee64a5d) and start prompting.
+### Core Pages
+- 🏠 **Home**: Hero section with features and testimonials
+- 📝 **Report Form**: AI report generation with customization options
+- 📤 **Upload Reference**: Format matching with user documents
+- 👁️ **Preview Reports**: AI-generated content preview and editing
+- 🚚 **Track Delivery**: Real-time delivery status updates
+- 📚 **Download History**: Past reports with download links
+- 📊 **Dashboard**: User control panel with analytics
 
-Changes made via Lovable will be committed automatically to this repo.
+### Planned Features
+- **AI Integration**: OpenAI/Claude for structured report generation
+- **Format Options**: IEEE, college, seminar, and custom formats
+- **Delivery System**: Local partner integration (Zomato/Swiggy model)
+- **Payment Gateway**: Razorpay UPI/card payments
+- **Admin Panels**: Printer and delivery partner management
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Vite** for bundling
+- **shadcn/ui** components
+- **Lucide React** icons
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Planned Backend (Supabase Integration)
+- **Authentication**: User login/signup
+- **Database**: PostgreSQL with Supabase
+- **File Storage**: Generated reports (DOCX/PDF)
+- **Edge Functions**: AI API integration
+- **Real-time**: Delivery tracking
 
-Follow these steps:
+## 💰 Pricing Structure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Double-sided**: ₹1/page
+- **Single-sided**: ₹2/page (₹1.5 for 20+ pages)
+- **Add-ons**: Spiral binding (+₹5), Plastic cover (+₹3)
+- **Delivery**: Free on orders >₹50, otherwise ₹15
+- **Payment**: First 2 orders prepaid, then COD available
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🏃‍♂️ Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 📱 Current Implementation Status
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### ✅ Completed (Phase 1)
+- Modern design system with dark/light themes
+- Responsive layout with sidebar navigation
+- Home page with hero section and features
+- Report form with real-time pricing
+- Core components (cards, calculators, etc.)
+- Professional branding and animations
 
-**Use GitHub Codespaces**
+### 🚧 In Progress (Phase 2)
+- Supabase backend integration
+- AI report generation (OpenAI/Claude)
+- File upload and processing
+- User authentication
+- Payment integration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 📋 Planned (Phase 3)
+- Delivery partner system
+- Admin dashboards
+- Real-time tracking
+- Mobile optimization
+- Analytics and reporting
 
-## What technologies are used for this project?
+## 🎯 Business Model
 
-This project is built with:
+**Target Market**: Students and professionals in Nanded city
+**Revenue Streams**: 
+- Report generation fees
+- Printing and delivery charges
+- Premium format options
+- Bulk order discounts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Competitive Advantage**:
+- AI-powered content generation
+- Ultra-fast local delivery (1-2 hours)
+- Professional formatting options
+- Transparent pricing
 
-## How can I deploy this project?
+## 📞 Contact & Development
 
-Simply open [Lovable](https://lovable.dev/projects/b6be48a0-ea05-4f2f-bb08-82652ee64a5d) and click on Share -> Publish.
+This project is built using [Lovable](https://lovable.dev) - the fastest way to build web applications.
 
-## Can I connect a custom domain to my Lovable project?
+For backend functionality (AI integration, payments, delivery tracking), connect your Supabase account using the green Supabase button in the Lovable interface.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**© 2024 NaN Report Hub - Revolutionizing academic and professional report generation in Nanded**
