@@ -14,6 +14,56 @@ export type Database = {
   }
   public: {
     Tables: {
+      orders: {
+        Row: {
+          created_at: string
+          delivery_address: string
+          delivery_status: string
+          id: string
+          payment_id: string | null
+          payment_status: string
+          report_id: string
+          total_amount: number
+          tracking_number: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          delivery_address: string
+          delivery_status?: string
+          id?: string
+          payment_id?: string | null
+          payment_status?: string
+          report_id: string
+          total_amount: number
+          tracking_number?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          delivery_address?: string
+          delivery_status?: string
+          id?: string
+          payment_id?: string | null
+          payment_status?: string
+          report_id?: string
+          total_amount?: number
+          tracking_number?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -36,6 +86,63 @@ export type Database = {
           created_at?: string
           full_name?: string | null
           id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reports: {
+        Row: {
+          additional_instructions: string | null
+          binding: boolean
+          cover: boolean
+          created_at: string
+          file_url: string | null
+          format: string
+          generated_content: string | null
+          id: string
+          pages: number
+          price: number
+          print_side: string
+          status: string
+          title: string
+          topic: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          additional_instructions?: string | null
+          binding?: boolean
+          cover?: boolean
+          created_at?: string
+          file_url?: string | null
+          format: string
+          generated_content?: string | null
+          id?: string
+          pages?: number
+          price: number
+          print_side?: string
+          status?: string
+          title: string
+          topic: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          additional_instructions?: string | null
+          binding?: boolean
+          cover?: boolean
+          created_at?: string
+          file_url?: string | null
+          format?: string
+          generated_content?: string | null
+          id?: string
+          pages?: number
+          price?: number
+          print_side?: string
+          status?: string
+          title?: string
+          topic?: string
           updated_at?: string
           user_id?: string
         }

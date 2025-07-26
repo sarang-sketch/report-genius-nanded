@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,6 +22,9 @@ import {
 } from "lucide-react";
 
 export default function ReportForm() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     reportName: "",
     topic: "",
@@ -31,10 +38,48 @@ export default function ReportForm() {
 
   const [currentPrice, setCurrentPrice] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    
+    if (!user) return;
+
+    try {
+      const { data, error } = await supabase
+        .from('reports')
+        .insert([
+          {
+            user_id: user.id,
+            title: formData.reportName,
+            topic: formData.topic,
+            pages: formData.pages,
+            format: formData.format,
+            print_side: formData.printSide,
+            binding: formData.binding,
+            cover: formData.cover,
+            additional_instructions: formData.additionalInstructions,
+            price: currentPrice,
+            status: 'generating'
+          }
+        ])
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      toast({
+        title: "Report creation started!",
+        description: "Your AI report is being generated. You can track its progress in your dashboard.",
+      });
+
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Error creating report:', error);
+      toast({
+        title: "Error",
+        description: "Failed to create your report. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   const formats = [

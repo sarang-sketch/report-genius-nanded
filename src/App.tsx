@@ -9,6 +9,10 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Home from "./pages/Home";
 import ReportForm from "./pages/ReportForm";
 import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
+import UploadReference from "./pages/UploadReference";
+import PreviewReport from "./pages/PreviewReport";
+import TrackDelivery from "./pages/TrackDelivery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,27 +37,27 @@ const App = () => (
                   } />
                   <Route path="/upload-reference" element={
                     <ProtectedRoute>
-                      <div className="p-8 text-center">Upload Reference - Coming Soon</div>
+                      <UploadReference />
                     </ProtectedRoute>
                   } />
                   <Route path="/preview-report" element={
                     <ProtectedRoute>
-                      <div className="p-8 text-center">Preview Report - Coming Soon</div>
+                      <PreviewReport />
                     </ProtectedRoute>
                   } />
                   <Route path="/track-delivery" element={
                     <ProtectedRoute>
-                      <div className="p-8 text-center">Track Delivery - Coming Soon</div>
+                      <TrackDelivery />
                     </ProtectedRoute>
                   } />
                   <Route path="/download-history" element={
                     <ProtectedRoute>
-                      <div className="p-8 text-center">Download History - Coming Soon</div>
+                      <Dashboard />
                     </ProtectedRoute>
                   } />
                   <Route path="/dashboard" element={
                     <ProtectedRoute>
-                      <div className="p-8 text-center">Dashboard - Coming Soon</div>
+                      <Dashboard />
                     </ProtectedRoute>
                   } />
                   <Route path="*" element={<NotFound />} />
