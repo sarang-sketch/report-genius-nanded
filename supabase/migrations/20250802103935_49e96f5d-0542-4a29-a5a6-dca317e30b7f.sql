@@ -1,0 +1,2 @@
+-- This is handled by the Supabase secrets system, not through SQL
+-- The GOOGLE_API_KEY secret needs to be set in the Supabase dashboard
