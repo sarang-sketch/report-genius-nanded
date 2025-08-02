@@ -71,6 +71,30 @@ export default function ReportForm() {
         description: "Your AI report is being generated. You can track its progress in your dashboard.",
       });
 
+      // Start report generation in background
+      try {
+        const { error: generateError } = await supabase.functions.invoke('generate-report', {
+          body: { reportId: data.id }
+        });
+
+        if (generateError) {
+          console.error('Error starting generation:', generateError);
+          // Update status to failed
+          await supabase
+            .from('reports')
+            .update({ status: 'failed' })
+            .eq('id', data.id);
+          
+          toast({
+            title: "Generation Error",
+            description: "Report created but generation failed. Please try again from dashboard.",
+            variant: "destructive"
+          });
+        }
+      } catch (generateError) {
+        console.error('Error invoking generate function:', generateError);
+      }
+
       navigate('/dashboard');
     } catch (error) {
       console.error('Error creating report:', error);

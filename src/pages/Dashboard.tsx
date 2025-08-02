@@ -79,8 +79,8 @@ export default function Dashboard() {
 
       // Calculate stats
       const totalReports = formattedReports.length;
-      const pendingReports = formattedReports.filter(r => r.status === 'pending' || r.status === 'generating').length;
-      const completedReports = formattedReports.filter(r => r.status === 'ready' || r.status === 'delivered').length;
+      const pendingReports = formattedReports.filter(r => ['pending', 'generating'].includes(r.status)).length;
+      const completedReports = formattedReports.filter(r => r.status === 'completed').length;
       const totalSpent = formattedReports.reduce((sum, r) => sum + r.price, 0);
 
       setStats({
@@ -98,6 +98,40 @@ export default function Dashboard() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleRegenerate = async (reportId: string) => {
+    try {
+      // Update status to generating
+      const { error: updateError } = await supabase
+        .from('reports')
+        .update({ status: 'generating' })
+        .eq('id', reportId);
+
+      if (updateError) throw updateError;
+
+      // Start regeneration
+      const { error: generateError } = await supabase.functions.invoke('generate-report', {
+        body: { reportId }
+      });
+
+      if (generateError) throw generateError;
+
+      toast({
+        title: "Regeneration Started",
+        description: "Your report is being regenerated. Check back in a few minutes.",
+      });
+
+      // Refresh reports
+      fetchReports();
+    } catch (error) {
+      console.error('Error regenerating report:', error);
+      toast({
+        title: "Error",
+        description: "Failed to regenerate report. Please try again.",
+        variant: "destructive"
+      });
     }
   };
 
