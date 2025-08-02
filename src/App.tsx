@@ -10,9 +10,10 @@ import Home from "./pages/Home";
 import ReportForm from "./pages/ReportForm";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import UploadReference from "./pages/UploadReference";
+import OrderPrint from "./pages/OrderPrint";
 import PreviewReport from "./pages/PreviewReport";
 import TrackDelivery from "./pages/TrackDelivery";
+import UploadReference from "./pages/UploadReference";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,11 @@ const App = () => (
                   <Route path="/preview-report" element={
                     <ProtectedRoute>
                       <PreviewReport />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/order-print" element={
+                    <ProtectedRoute>
+                      <OrderPrint />
                     </ProtectedRoute>
                   } />
                   <Route path="/track-delivery" element={
