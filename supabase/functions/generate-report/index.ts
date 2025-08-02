@@ -7,7 +7,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
+const googleApiKey = Deno.env.get('GOOGLE_API_KEY');
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -36,7 +36,7 @@ serve(async (req) => {
 
     console.log('Report details:', report);
 
-    // Generate content using OpenAI
+    // Generate content using Google Gemini
     const prompt = `Generate a comprehensive ${report.pages}-page report on "${report.topic}" with the title "${report.title}".
 
 Format requirements:
@@ -52,28 +52,26 @@ Additional instructions: ${report.additional_instructions || 'None'}
 
 Please structure the content with proper HTML formatting for PDF generation.`;
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${googleApiKey}`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          {
-            role: 'system',
-            content: 'You are a professional report writer. Generate well-structured, informative content with proper formatting.'
-          },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: 4000,
-        temperature: 0.7,
+        contents: [{
+          parts: [{
+            text: `You are a professional report writer. Generate well-structured, informative content with proper formatting.\n\n${prompt}`
+          }]
+        }],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 4000,
+        }
       }),
     });
 
     const aiData = await response.json();
-    const generatedContent = aiData.choices[0].message.content;
+    const generatedContent = aiData.candidates[0].content.parts[0].text;
 
     console.log('Content generated, length:', generatedContent.length);
 
