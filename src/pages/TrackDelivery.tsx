@@ -323,6 +323,8 @@ export default function TrackDelivery() {
                   address: deliveryAddress.address
                 }}
                 deliveryLocation={deliveryPosition || deliveryAddress.coordinates}
+                estimatedTime={estimatedTime}
+                deliveryStatus={order.delivery_status}
               />
             )}
 

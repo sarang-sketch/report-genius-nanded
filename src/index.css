@@ -126,6 +126,34 @@
   }
 }
 
+/* Map marker animations */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.marker {
+  transition: all 0.3s ease;
+}
+
+.marker:hover {
+  transform: scale(1.1);
+}
+
+.delivery-marker {
+  animation: pulse 2s infinite;
+}
+
+.destination-marker {
+  filter: drop-shadow(0 2px 8px rgba(239, 68, 68, 0.4));
+}
+
 @layer base {
   * {
     @apply border-border;
