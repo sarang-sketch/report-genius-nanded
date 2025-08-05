@@ -168,13 +168,23 @@ export default function Dashboard() {
               Welcome back! Here's an overview of your reports.
             </p>
           </div>
-          <Button 
-            onClick={() => navigate('/report-form')}
-            className="bg-gradient-primary hover:opacity-90 text-white shadow-glow"
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            New Report
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              onClick={() => navigate('/submit-report')}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Submit Report
+            </Button>
+            <Button 
+              onClick={() => navigate('/report-form')}
+              className="bg-gradient-primary hover:opacity-90 text-white shadow-glow"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              AI Report
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}

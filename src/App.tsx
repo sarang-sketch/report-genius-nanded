@@ -8,7 +8,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Home from "./pages/Home";
 import ReportForm from "./pages/ReportForm";
-import Auth from "./pages/Auth";
+import OTPAuth from "./pages/OTPAuth";
+import ReportFormPage from "./pages/ReportFormPage";
 import Dashboard from "./pages/Dashboard";
 import OrderPrint from "./pages/OrderPrint";
 import PreviewReport from "./pages/PreviewReport";
@@ -26,7 +27,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/auth" element={<Auth />} />
+            <Route path="/auth" element={<OTPAuth />} />
             <Route path="*" element={
               <Layout>
                 <Routes>
@@ -34,6 +35,11 @@ const App = () => (
                   <Route path="/report-form" element={
                     <ProtectedRoute>
                       <ReportForm />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/submit-report" element={
+                    <ProtectedRoute>
+                      <ReportFormPage />
                     </ProtectedRoute>
                   } />
                   <Route path="/upload-reference" element={
